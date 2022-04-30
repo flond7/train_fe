@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { TestComponentComponent } from './components/test-component/test-component.component';
+import { ListPointsComponent } from './components/list-points/list-points.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    ListPointsComponent
   ],
   imports: [
     BrowserModule,
