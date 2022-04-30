@@ -9,13 +9,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { ListPointsComponent } from './components/list-points/list-points.component';
 import { ListAchivementsComponent } from './view/list-achivements/list-achivements.component';
+import { RailwayComponent } from './view/railway/railway.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponentComponent,
     ListPointsComponent,
-    ListAchivementsComponent
+    ListAchivementsComponent,
+    RailwayComponent
   ],
   imports: [
     BrowserModule,
