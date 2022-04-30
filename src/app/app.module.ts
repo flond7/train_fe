@@ -10,6 +10,7 @@ import { TestComponentComponent } from './components/test-component/test-compone
 import { ListPointsComponent } from './components/list-points/list-points.component';
 import { ListAchivementsComponent } from './view/list-achivements/list-achivements.component';
 import { RailwayComponent } from './view/railway/railway.component';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RailwayComponent } from './view/railway/railway.component';
     TestComponentComponent,
     ListPointsComponent,
     ListAchivementsComponent,
-    RailwayComponent
+    RailwayComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
