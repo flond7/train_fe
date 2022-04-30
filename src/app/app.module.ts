@@ -8,12 +8,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { ListPointsComponent } from './components/list-points/list-points.component';
+import { ListAchivementsComponent } from './view/list-achivements/list-achivements.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponentComponent,
-    ListPointsComponent
+    ListPointsComponent,
+    ListAchivementsComponent
   ],
   imports: [
     BrowserModule,
