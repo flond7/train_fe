@@ -1,1 +1,15 @@
-<p>question works!</p>
+<div *ngIf="showQuestion" class="question-content">
+  <div class="row">
+
+    <div class="">{{question.text}}</div>
+    <div *ngFor="let o of question.options" (click)="optionValue = o">
+      <label>{{o}}</label>
+      <input type="radio" id="huey" name="question.id" [value]="o">
+    </div>
+
+    <div class="question-confirm">
+      <button (click)="confirmAnswer()">Conferma scelta</button>
+    </div>
+
+  </div>
+</div>
