@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   // Save partial answer
-  savePartialAnswer(user, answers) {
+  savePartialAnswer(user: any, answers: any) {
     console.log(user);
     console.log(answers);
   }
