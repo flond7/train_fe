@@ -4,9 +4,9 @@ import { ListAchivementsComponent } from './view/list-achivements/list-achivemen
 import { RailwayComponent } from './view/railway/railway.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'achievements', component: ListAchivementsComponent },
-  { path: 'railway', component: RailwayComponent },
+  { path: 'railway', component: RailwayComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
