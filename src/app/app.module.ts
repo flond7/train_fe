@@ -9,7 +9,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { ListPointsComponent } from './components/list-points/list-points.component';
-import { ListAchivementsComponent } from './view/list-achivements/list-achivements.component';
 import { RailwayComponent } from './view/railway/railway.component';
 import { QuestionComponent } from './components/question/question.component';
 import { VideoComponent } from './components/video/video.component';
@@ -20,7 +19,6 @@ import { AchievementsComponent } from './view/achievements/achievements.componen
     AppComponent,
     TestComponentComponent,
     ListPointsComponent,
-    ListAchivementsComponent,
     RailwayComponent,
     QuestionComponent,
     VideoComponent,
