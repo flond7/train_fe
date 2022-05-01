@@ -12,6 +12,8 @@ import { ListPointsComponent } from './components/list-points/list-points.compon
 import { ListAchivementsComponent } from './view/list-achivements/list-achivements.component';
 import { RailwayComponent } from './view/railway/railway.component';
 import { QuestionComponent } from './components/question/question.component';
+import { VideoComponent } from './components/video/video.component';
+import { AchievementsComponent } from './view/achievements/achievements.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { QuestionComponent } from './components/question/question.component';
     ListPointsComponent,
     ListAchivementsComponent,
     RailwayComponent,
-    QuestionComponent
+    QuestionComponent,
+    VideoComponent,
+    AchievementsComponent
   ],
   imports: [
     BrowserModule,

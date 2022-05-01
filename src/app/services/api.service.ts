@@ -45,7 +45,7 @@ export class ApiService {
     console.log(answers);
   }
   getVideoDetails(id: any): Observable<any> {
-    return this.http.get<any>(this.basePath + '/video-details/' + id, this.getOptions())}
+    return this.http.get<any>(this.basePath + '/video-detail/' + id, this.getOptions())}
 
 
 
