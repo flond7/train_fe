@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './../../services/api.service';
 //import { VIDEO_ONE } from './../../constants';
 
 @Component({
@@ -9,14 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class RailwayComponent implements OnInit {
 
-  //videoConfig = VIDEO_ONE;
-  video = {
-    duration: 1500,
-    questions: [
-      { question: 'what is the color of the sea?', options: ['red', 'blue', 'white'], correct: 'blue' },
-      { question: 'what is the color of the sea?', options: ['red', 'blue', 'white'], correct: 'blue' }
-    ]
-  };
+  video: any;
   showQuestions = true;
   intervalPassed: any;
 
@@ -30,20 +24,13 @@ export class RailwayComponent implements OnInit {
     { name: 'Venezia, velocità massima inferiore', icon: 'bridge', color: 'danger' },
     { name: 'Sosta obbligatoria', icon: '', color: '' },
   ];
-  constructor() { }
+  constructor(public api: ApiService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  playVideo() {
-    // if video is played create an element that prevents stopping it and start timer so
-    // that questions can be shown at the end
-    this.intervalPassed = setInterval(() => {
-      this.showQuestions = true;
-    }, this.video.duration);
-  }
-
-  showHideQuestions(done: any) {
+  videoDoneShowQuestions(done: boolean) {
     // if I'm done I don't need to show questions anymore
     this.showQuestions = !done;
   }
+
 }
