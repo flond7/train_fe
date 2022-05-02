@@ -13,6 +13,7 @@ import { RailwayComponent } from './view/railway/railway.component';
 import { QuestionComponent } from './components/question/question.component';
 import { VideoComponent } from './components/video/video.component';
 import { AchievementsComponent } from './view/achievements/achievements.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AchievementsComponent } from './view/achievements/achievements.componen
     RailwayComponent,
     QuestionComponent,
     VideoComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
