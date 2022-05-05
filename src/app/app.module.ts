@@ -14,6 +14,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { VideoComponent } from './components/video/video.component';
 import { AchievementsComponent } from './view/achievements/achievements.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { LoginComponent } from './view/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SafePipe } from './pipes/safe.pipe';
     QuestionComponent,
     VideoComponent,
     AchievementsComponent,
-    SafePipe
+    SafePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
