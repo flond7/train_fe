@@ -54,3 +54,9 @@ SASS
 
 # YT
 https://betterprogramming.pub/integrate-youtubes-iframe-player-api-in-angular-4e87f0ec98f4
+
+
+
+# ERRORS
+
+### Argument of type is not assignable to parameter of type 'never'" occurs when we declare an empty array without explicitly providing a type for it and attempt to add elements to it. To solve the error, explicitly type the empty array, e.g. const arr: string[] = [];
