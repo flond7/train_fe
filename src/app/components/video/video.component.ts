@@ -14,16 +14,19 @@ export class VideoComponent implements OnInit {
   /* 1. Some required variables which will be used by YT API*/
   public YT: any;
   public videoYT: any;
+  public videoYTid: any;
   public player: any;
   public reframed: Boolean = false;
+  public frontEndOrigin = 'http://localhost:4200';
 
   constructor(public api: ApiService) { }
 
   ngOnInit(): void {
     this.api.getVideoDetails(this.videoId).subscribe(data => {
       this.video = data
+      this.video.url = this.video.url + '?controls=0?enablejsapi=1&origin='+this.frontEndOrigin;
     });
-    this.video = 'EY6cOlFPkpU';
+    this.videoYTid = 'kVpv8-5XWOI';
     this.init();
   }
 
@@ -40,10 +43,11 @@ export class VideoComponent implements OnInit {
   }
 
   startVideo() {
+    console.log("start");
     this.reframed = false;
     this.player = new window['YT'].Player('player', {
-      videoId: this.video,
-      playerVars: {
+      videoId: this.videoYTid,
+      /* playerVars: {
         autoplay: 1,
         modestbranding: 1,
         controls: 1,
@@ -52,17 +56,19 @@ export class VideoComponent implements OnInit {
         showinfo: 0,
         fs: 0,
         playsinline: 1
-      },
+      }, */
       events: {
-        'onStateChange': this.onPlayerStateChange.bind(this),
+        'onStateChange': this.onPlayerStateChange.bind(this.player),
         'onError': this.onPlayerError.bind(this),
         'onReady': this.onPlayerReady.bind(this),
       }
     });
+    console.log(this.player)
   }
 
   /* 4. It will be called when the Video Player is ready */
   onPlayerReady(event: any) {
+    console.log("ready")
     event.target.playVideo();
   }
 
@@ -89,13 +95,15 @@ export class VideoComponent implements OnInit {
   }
 
   cleanTime() {
+    console.log("clean");
     return Math.round(this.player.getCurrentTime())
   }
 
   onPlayerError(event: any) {
+    console.log("error");
     switch (event.data) {
       case 2:
-        console.log('' + this.video)
+        console.log('' + this.videoYTid)
         break;
       case 100:
         break;
