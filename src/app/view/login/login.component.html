@@ -1,15 +1,15 @@
-<form *ngIf="checkoutForm" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<div class="w-100 mt-5 pt-5 d-flex align-items-center justify-content-center">
+  <form *ngIf="checkoutForm" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <input id="userid" class="my-3" type="text" placeholder="userid" formControlName="userid">
+    </div>
+    <div class="row">
+      <input id="password" class="my-3" type="password" placeholder="password" formControlName="password">
+    </div>
 
-  <div>
-    <label for="userid">User ID</label>
-    <input id="userid" type="text" formControlName="userid">
-  </div>
+    <div class="row mt-5">
+      <button class="btn btn-primary" type="submit">Log in</button>
+    </div>
 
-  <div>
-    <label for="password">Password</label>
-    <input id="password" type="password" formControlName="password">
-  </div>
-
-  <button class="button" type="submit">Log in</button>
-
-</form>
+  </form>
+</div>
