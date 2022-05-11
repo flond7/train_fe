@@ -9,9 +9,9 @@ import { AuthService } from '../../services/auth.service'
 })
 export class LoginComponent implements OnInit {
 
-  checkoutForm = this.formBuilder.group({
+  loginForm = this.formBuilder.group({
     name: '',
-    address: ''
+    password: ''
   });
 
   constructor(private formBuilder: FormBuilder, public AuthService: AuthService) { }
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
-    console.warn('Your order has been submitted', this.checkoutForm.value);
-    this.checkoutForm.reset();
+    console.log('Your order has been submitted' + this.loginForm.value);
+    this.loginForm.reset();
   }
 
 }
