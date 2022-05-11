@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  checkoutForm = this.formBuilder.group({
+    name: '',
+    address: ''
+  });
 
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder, public AuthService: AuthService) { }
+
+  ngOnInit(): void {}
+
+  onSubmit(): void {
+    // Process checkout data here
+
+    console.warn('Your order has been submitted', this.checkoutForm.value);
+    this.checkoutForm.reset();
   }
 
 }
