@@ -11,10 +11,12 @@ import { mergeAll, groupBy, mergeMap, toArray } from 'rxjs';
 export class AchievementsComponent implements OnInit {
 
   openTab = 0;
-  tabList = ['tab1', 'tab2', 'tab3'];
+  tabList = [];
   
-  questionList = ['tab1', 'tab2', 'tab3']
-  userResults = [];
+  questionList = []
+  userResults: Array<any> = [];
+  userId = 2;
+  
 
   constructor(public api: ApiService) { }
 
@@ -24,15 +26,15 @@ export class AchievementsComponent implements OnInit {
       console.log(res)
     })
 
-    /* this.api.getUserResults(2).pipe(
+    this.api.getUserResults(this.userId).pipe(
       //create arrays of elements groupe by railwayId
       mergeAll(),
       groupBy((el: any) => el['railwayId']),
       mergeMap(group => group.pipe(toArray())),
     ).subscribe((res:any) => {
-      this.userResults = res;
-      console.log(this.userResults)
-    }) */
+      this.userResults.push(res);
+      console.log(res)
+    })
   }
 
 }

@@ -4,9 +4,8 @@
   </div>
 </div>
 
-<div class="">
-  {{this.openTab}}
-  <div *ngFor="let q of this.userResults[0]" class="row">
+<div *ngIf="this.userResults" class="">
+  <div *ngFor="let q of this.userResults[this.openTab]" class="row">
     <div class="col-md-10">{{q.questionText}}</div>
     <div class="col-md-2">{{q.resultCorrect}}</div>
   </div>
