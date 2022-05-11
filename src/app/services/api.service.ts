@@ -44,10 +44,19 @@ export class ApiService {
     console.log(user);
     console.log(answers);
   }
+
+
+  getRailwayList(): Observable<any> {
+    return this.http.get<any>(this.basePath + '/rail-list', this.getOptions())}  
+
+
   getVideoDetails(id: any): Observable<any> {
     return this.http.get<any>(this.basePath + '/video-detail/' + id, this.getOptions())}
 
 
+
+  getUserResults(id: any): Observable<any> {
+    return this.http.get<any>(this.basePath + '/user-results/' + id, this.getOptions())}  
 
   /* getVideoDetails(id: any): Observable<any> {
     return this.http

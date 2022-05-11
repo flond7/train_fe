@@ -1,1 +1,12 @@
-<p>achievements works!</p>
+<div class="row">
+  <div *ngFor="let tab of tabList, let i = index " [ngClass]="{'bg-primary': openTab === i}" class="col btn border-bottom" (click)="openTab = i">
+    {{tab}}
+  </div>
+</div>
+
+<div *ngIf="this.userResults" class="">
+  <div *ngFor="let q of this.userResults[this.openTab]" class="row">
+    <div class="col-md-10">{{q.questionText}}</div>
+    <div class="col-md-2">{{q.resultCorrect}}</div>
+  </div>
+</div>
