@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,13 @@ export class ApiService {
   // Http Options
   getOptions() {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    /* if (this.auth.jwtToken) {
-      headers = headers.append('Authorization', `Bearer: ${this.auth.jwtToken}`);
-    } */
+    if (this.AuthService.jwtToken) {
+      headers = headers.append('Authorization', `Bearer: ${this.AuthService.jwtToken}`);
+    }
     return { headers };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public AuthService: AuthService) { }
   // Handle API errors
   /* handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -47,7 +48,7 @@ export class ApiService {
 
 
   getRailwayList(): Observable<any> {
-    return this.http.get<any>(this.basePath + '/rail-list', this.getOptions())}  
+    return this.http.get<any>(this.basePath + '/rail-list', this.getOptions())}
 
 
   getVideoDetails(id: any): Observable<any> {
@@ -56,7 +57,7 @@ export class ApiService {
 
 
   getUserResults(id: any): Observable<any> {
-    return this.http.get<any>(this.basePath + '/user-results/' + id, this.getOptions())}  
+    return this.http.get<any>(this.basePath + '/user-results/' + id, this.getOptions())}
 
   /* getVideoDetails(id: any): Observable<any> {
     return this.http
