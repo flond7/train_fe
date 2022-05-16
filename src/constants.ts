@@ -10,6 +10,8 @@
   remember to assign videoConfig = VIDEO_XXX because ionic apparently wants camel case vars
 */
 
+export const BASE_PATH = 'http://127.0.0.1:8000/api';
+
 export const VIDEO_ONE = {
   path: 'torino-venezia',
   url: 'https://www.youtube.com/watch?v=q-LiIoB_RKc',
