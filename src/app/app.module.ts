@@ -16,6 +16,7 @@ import { VideoComponent } from './components/video/video.component';
 import { AchievementsComponent } from './view/achievements/achievements.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { LoginComponent } from './view/login/login.component';
+import { RailwayListComponent } from './view/railway-list/railway-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginComponent } from './view/login/login.component';
     VideoComponent,
     AchievementsComponent,
     SafePipe,
-    LoginComponent
+    LoginComponent,
+    RailwayListComponent
   ],
   imports: [
     BrowserModule,
