@@ -14,6 +14,7 @@ export class AuthService {
   public token_expires: any;  // the token expiration date
   public username: any;       // the username of the logged in user
   public errors: any = [];    // error messages received from the login attempt
+  public isLoggedInSubject = false;
 
   constructor(private http: HttpClient, public router: Router) {
     this.httpOptions = {
@@ -28,12 +29,17 @@ export class AuthService {
     this.http.post(this.basePath + '/token/', user, this.httpOptions).subscribe({
       next: (data) => {
         localStorage.setItem('access_token', data['access']);
+        this.isLoggedInSubject = true;
         //this.updateData(data['access']);
         this.router.navigateByUrl('/');
       },
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })
+  }
+
+  isLoggedIn() {
+    return this.isLoggedInSubject = false;
   }
 
   /*
