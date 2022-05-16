@@ -1,7 +1,7 @@
 <div class="w-100 mt-5 pt-5 d-flex align-items-center justify-content-center">
   <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="row">
-      <input id="userid" class="my-3" type="text" placeholder="userid" formControlName="userid">
+      <input id="user" class="my-3" type="text" placeholder="user" formControlName="user">
     </div>
     <div class="row">
       <input id="password" class="my-3" type="password" placeholder="password" formControlName="password">
