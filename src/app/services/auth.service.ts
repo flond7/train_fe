@@ -77,6 +77,12 @@ export class AuthService {
     );
   } */
 
+  public getToken() {
+    //if expiration date is still good return localstorage item, otherwise redirect to login
+    this.jwtToken = localStorage.getItem('access_token');
+    return this.jwtToken
+  }
+
   public logout() {
     this.jwtToken = null;
     this.token_expires = null;

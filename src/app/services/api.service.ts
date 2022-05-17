@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { BASE_PATH } from './../../constants';
 import { catchError, retry } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
@@ -10,13 +11,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class ApiService {
   // API path
-  basePath = 'http://127.0.0.1:8000/api';
-
+  basePath = BASE_PATH;
 
 
   // Http Options
   getOptions() {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.AuthService.getToken()
+    console.log(this.AuthService.jwtToken)
     if (this.AuthService.jwtToken) {
       headers = headers.append('Authorization', `Bearer: ${this.AuthService.jwtToken}`);
     }
@@ -46,9 +48,8 @@ export class ApiService {
     console.log(answers);
   }
 
-
   getRailwayList(): Observable<any> {
-    return this.http.get<any>(this.basePath + '/rail-list', this.getOptions())}
+    return this.http.get<any>(this.basePath + '/railway-list', this.getOptions())}
 
 
   getVideoDetails(id: any): Observable<any> {
