@@ -21,6 +21,7 @@ export class AuthService {
     this.httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
+    this.jwtToken = this.getToken();
   }
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
@@ -38,6 +39,7 @@ export class AuthService {
       complete: () => console.info('complete')
     })
   } */
+  
 
   /* JWT TOKEN */
   public login(user: any) {
@@ -63,10 +65,11 @@ export class AuthService {
    // Refreshes the JWT token, to extend the time the user is logged in
    public verifyToken(user: any) {
     console.log('verify');
-    this.http.post(this.basePath + '/token/verify/', JSON.stringify({ token: this.jwtToken }), this.httpOptions).subscribe({
+    //console.log({ "token": this.jwtToken });   
+    this.http.post(this.basePath + '/token/verify/', JSON.stringify({ "token": this.jwtToken }), this.httpOptions).subscribe({
       next: (data) => console.info(data),
       error: (e) => console.error(e),
-      complete: () => console.info('complete')
+      complete: () => console.info('verify complete')
     })
   }
 
