@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './../../services/api.service';
 
 @Component({
   selector: 'app-railway-list',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./railway-list.component.sass']
 })
 export class RailwayListComponent implements OnInit {
-
-  constructor() { }
+  railwayList: Array<Object> = [];
+  constructor(public api: ApiService) { }
 
   ngOnInit(): void {
+
+
+    this.api.getRailwayList().subscribe((res:any) => {
+      this.railwayList = res.map((el: any) => el.name);
+      console.log(res)
+    })
   }
 
 }
