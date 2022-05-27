@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   // API path
   basePath = BASE_PATH;
+  tokenPath = "http://127.0.0.1:8000";
   private httpOptions: any;   // http options used for making API calls
   public jwtToken: any;       //JWT token
   public token_expires: any;  // the token expiration date
@@ -24,15 +25,46 @@ export class AuthService {
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
 
+  /* public login(user: any) {
+    console.log('login');
+    this.http.post(this.basePath + '/login/', user, this.httpOptions).subscribe({
+      next: (data) => {
+        localStorage.setItem('access_token', data['access']);
+        this.isLoggedInSubject = true;
+        //this.updateData(data['access']);
+        this.router.navigateByUrl('/railway-list');
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    })
+  } */
+
+  /* JWT TOKEN */
   public login(user: any) {
     console.log('login');
     this.http.post(this.basePath + '/token/', user, this.httpOptions).subscribe({
       next: (data) => {
         localStorage.setItem('access_token', data['access']);
+        localStorage.setItem('refresh_token', data['refresh']);
+        /* times are set in constants (cheating, I know what they are from BE, I'm just reporting them here, no calculations involved */
+        /* localStorage.setItem('access_expire', );
+        localStorage.setItem('refresh_expire', ); */
+
         this.isLoggedInSubject = true;
         //this.updateData(data['access']);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/railway-list');
       },
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    })
+  }
+
+
+   // Refreshes the JWT token, to extend the time the user is logged in
+   public verifyToken(user: any) {
+    console.log('verify');
+    this.http.post(this.basePath + '/token/verify/', JSON.stringify({ token: this.jwtToken }), this.httpOptions).subscribe({
+      next: (data) => console.info(data),
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })
