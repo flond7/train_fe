@@ -21,6 +21,7 @@ export class ApiService {
     console.log(this.AuthService.jwtToken)
     if (this.AuthService.jwtToken) {
       headers = headers.append('Authorization', `Bearer: ${this.AuthService.jwtToken}`);
+      //console.log(headers)
     }
     return { headers };
   }
@@ -49,6 +50,7 @@ export class ApiService {
   }
 
   getRailwayList(): Observable<any> {
+    /* this.AuthService.verifyToken(this.AuthService.jwtToken); */
     return this.http.get<any>(this.basePath + '/railway-list', this.getOptions())}
 
 

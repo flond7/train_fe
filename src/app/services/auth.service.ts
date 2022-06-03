@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   // API path
   basePath = BASE_PATH;
-  tokenPath = "http://127.0.0.1:8000";
+  tokenPath = "http://127.0.0.1:8000/auth";
   private httpOptions: any;   // http options used for making API calls
   public jwtToken: any;       //JWT token
   public token_expires: any;  // the token expiration date
@@ -44,14 +44,9 @@ export class AuthService {
   /* JWT TOKEN */
   public login(user: any) {
     console.log('login');
-    this.http.post(this.basePath + '/token/', user, this.httpOptions).subscribe({
+    this.http.post(this.tokenPath + '/login/', user, this.httpOptions).subscribe({
       next: (data) => {
-        localStorage.setItem('access_token', data['access']);
-        localStorage.setItem('refresh_token', data['refresh']);
-        /* times are set in constants (cheating, I know what they are from BE, I'm just reporting them here, no calculations involved */
-        /* localStorage.setItem('access_expire', );
-        localStorage.setItem('refresh_expire', ); */
-
+        localStorage.setItem('access_token', data['key']);
         this.isLoggedInSubject = true;
         //this.updateData(data['access']);
         this.router.navigateByUrl('/railway-list');
