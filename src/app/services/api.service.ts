@@ -19,10 +19,15 @@ export class ApiService {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.AuthService.getToken()
     console.log(this.AuthService.jwtToken)
-    if (this.AuthService.jwtToken) {
-      headers = headers.append('Authorization', `Bearer: ${this.AuthService.jwtToken}`);
-      //console.log(headers)
+    if (localStorage.getItem('access_token')) {
+      headers = headers.append('Authorization', 'Token:' + localStorage.getItem('access_token'));
     }
+    console.log(headers);
+
+    /* if (this.AuthService.jwtToken) {
+      headers = headers.append('Authorization', `Token: ${this.AuthService.jwtToken}`);
+      //console.log(headers)
+    } */
     return { headers };
   }
 
