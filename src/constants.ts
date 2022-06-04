@@ -11,6 +11,7 @@
 */
 
 export const BASE_PATH = 'http://127.0.0.1:8000/api';
+export const TOKEN_PATH = 'http://127.0.0.1:8000/auth';
 export const ACCESS_EXPIRE = '';
 export const REFRESH_EXPIRE = '';
 

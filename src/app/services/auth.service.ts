@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BASE_PATH } from './../../constants';
+import { BASE_PATH, TOKEN_PATH } from './../../constants';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   // API path
   basePath = BASE_PATH;
-  tokenPath = "http://127.0.0.1:8000/auth";
+  tokenPath = TOKEN_PATH;
   private httpOptions: any;   // http options used for making API calls
-  public jwtToken: any;       //JWT token
+  public token: any;          //Jtoken
   public token_expires: any;  // the token expiration date
   public username: any;       // the username of the logged in user
   public errors: any = [];    // error messages received from the login attempt
@@ -21,7 +21,6 @@ export class AuthService {
     this.httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.jwtToken = this.getToken();
   }
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
@@ -39,7 +38,7 @@ export class AuthService {
       complete: () => console.info('complete')
     })
   } */
-  
+
 
   /* JWT TOKEN */
   public login(user: any) {
@@ -60,7 +59,7 @@ export class AuthService {
    // Refreshes the JWT token, to extend the time the user is logged in
    public verifyToken(user: any) {
     console.log('verify');
-    //console.log({ "token": this.jwtToken });   
+    //console.log({ "token": this.jwtToken });
     this.http.post(this.basePath + '/token/verify/', JSON.stringify({ "token": this.jwtToken }), this.httpOptions).subscribe({
       next: (data) => console.info(data),
       error: (e) => console.error(e),
@@ -85,15 +84,6 @@ export class AuthService {
       );
     }
    */
-  // Refreshes the JWT token, to extend the time the user is logged in
-  public refreshToken(user: any) {
-    console.log('login');
-    this.http.post(this.basePath + '/token/refresh', JSON.stringify({ token: this.jwtToken }), this.httpOptions).subscribe({
-      next: (data) => this.updateData(data['refresh']),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    })
-  }
 
   /* public refreshToken() {
     this.http.post('/api-token-refresh/', JSON.stringify({ token: this.jwtToken }), this.httpOptions).subscribe(
@@ -109,8 +99,8 @@ export class AuthService {
 
   public getToken() {
     //if expiration date is still good return localstorage item, otherwise redirect to login
-    this.jwtToken = localStorage.getItem('access_token');
-    return this.jwtToken
+    this.token = localStorage.getItem('access_token');
+    return this.token
   }
 
   public logout() {
