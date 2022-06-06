@@ -57,7 +57,7 @@ export class AuthService {
 
 
    // Refreshes the JWT token, to extend the time the user is logged in
-   public verifyToken(user: any) {
+   /* public verifyToken(user: any) {
     console.log('verify');
     //console.log({ "token": this.jwtToken });
     this.http.post(this.basePath + '/token/verify/', JSON.stringify({ "token": this.jwtToken }), this.httpOptions).subscribe({
@@ -65,7 +65,7 @@ export class AuthService {
       error: (e) => console.error(e),
       complete: () => console.info('verify complete')
     })
-  }
+  } */
 
   isLoggedIn() {
     return this.isLoggedInSubject = false;
@@ -104,20 +104,9 @@ export class AuthService {
   }
 
   public logout() {
-    this.jwtToken = null;
+    //this.jwtToken = null;
     this.token_expires = null;
     this.username = null;
-  }
-
-  private updateData(token: any) {
-    this.jwtToken = token;
-    this.errors = [];
-
-    // decode the token to read the username and expiration timestamp
-    const token_parts = this.jwtToken.split(/\./);
-    const token_decoded = JSON.parse(window.atob(token_parts[1]));
-    this.token_expires = new Date(token_decoded.exp * 1000);
-    this.username = token_decoded.username;
   }
 
 }
