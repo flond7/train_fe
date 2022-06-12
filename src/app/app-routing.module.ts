@@ -9,7 +9,7 @@ const routes: Routes = [
   //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'railway-list', component: RailwayListComponent },
   { path: 'achievements', component: AchievementsComponent },
-  { path: 'railway', component: RailwayComponent },
+  { path: 'railway/:id', component: RailwayComponent },
   { path: 'login', component: LoginComponent }
 ];
 @NgModule({

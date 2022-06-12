@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
+import { ActivatedRoute } from '@angular/router';
 //import { VIDEO_ONE } from './../../constants';
 
 @Component({
@@ -14,6 +15,10 @@ export class RailwayComponent implements OnInit {
   showQuestions = true;
   intervalPassed: any;
 
+  // get id params and load correct rout information
+  id: any;
+  par: any;
+
   listaPunti = [
     { name: 'Partenza da Trieste', icon: '', color: '' },
     { name: 'Sistiana', icon: '', color: '' },
@@ -24,9 +29,13 @@ export class RailwayComponent implements OnInit {
     { name: 'Venezia, velocità massima inferiore', icon: 'bridge', color: 'danger' },
     { name: 'Sosta obbligatoria', icon: '', color: '' },
   ];
-  constructor(public api: ApiService) { }
+  constructor(public api: ApiService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.par = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+    });
+  }
 
   videoDoneShowQuestions(done: boolean) {
     // if I'm done I don't need to show questions anymore
