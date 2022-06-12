@@ -14,8 +14,9 @@ export class RailwayListComponent implements OnInit {
 
 
     this.api.getRailwayList().subscribe((res:any) => {
-      this.railwayList = res.results.map((el: any) => el.name);
-      console.log(res)
+      this.railwayList = res.results;
+      //this.railwayList = res.results.map((el: any) => el.name);
+      console.log(this.railwayList)
     })
   }
 

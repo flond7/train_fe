@@ -1,1 +1,3 @@
-<div *ngFor="let r of railwayList">{{r}}</div>
+<div *ngFor="let r of railwayList" class="">
+  <a class="" [routerLink]="['/railway', r['id']]">{{r['name']}}</a>
+</div>
