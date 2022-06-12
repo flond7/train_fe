@@ -1,10 +1,12 @@
-<h2>{{video.name}}</h2>
-<div class="">
-  <iframe width="560" height="315" [src]="video.url | safe" title="video.name" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<div class="my-3">{{video.description}}</div>
-<!-- <div class="buttons-container">
+<div *ngIf='this.video'>
+  <h2>{{video.name}}</h2>
+  <div class="">
+    <iframe width="560" height="315" [src]="video.url | safe" title="video.name" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="my-3">{{video.description}}</div>
+  <!-- <div class="buttons-container">
   <button class="btn bg-primary" (click)="this.startVideo()">Avvia</button>
   <p>Una volta avviato il video non potrá essere fermato</p>
 </div>
  -->
+</div>

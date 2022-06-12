@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div *ngIf='this.railway' class="col-md-5">
       <h1>{{this.railway.name}}</h1>
       <div class="">{{this.railway.description}}</div>
       <!-- <div class="list">
         <div *ngFor="let p of railway.list" class=""></div>
       </div> -->
     </div>
-    <div class="col-md-7">
+    <div *ngIf='this.currentVideo' class="col-md-7">
       <app-video [videoId]="this.currentVideo['video-id']" (ended)="videoDoneShowQuestions($event)"></app-video>
   </div>
 
