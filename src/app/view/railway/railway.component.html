@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      qui ci va la lista
+    <div class="col-md-5">
+      <h1>{{this.railway.name}}</h1>
+      <div class="">{{this.railway.description}}</div>
+      <!-- <div class="list">
+        <div *ngFor="let p of railway.list" class=""></div>
+      </div> -->
     </div>
-    <div class="col-md-6">
-      <app-video [videoId]="1" (ended)="videoDoneShowQuestions($event)"></app-video>
+    <div class="col-md-7">
+      <app-video [videoId]="this.currentVideo['video-id']" (ended)="videoDoneShowQuestions($event)"></app-video>
   </div>
 
   <!-- <app-question *ngIf="showQuestions" [questionList]="video.questions" (done)="showHideQuestions($event)"></app-question> -->

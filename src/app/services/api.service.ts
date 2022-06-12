@@ -36,6 +36,12 @@ export class ApiService {
     /* this.AuthService.verifyToken(this.AuthService.jwtToken); */
     return this.http.get<any>(this.basePath + '/railway-list/', this.getOptions())}
 
+  getRailwayDetail(id: any): Observable<any> {
+    return this.http.get<any>(this.basePath + '/railway-detail/' + id, this.getOptions())
+  }
+  getRailwayVideoList(id: any): Observable<any> {
+    return this.http.get<any>(this.basePath + '/railway-video-list/' + id, this.getOptions())
+  }
 
   getVideoDetails(id: any): Observable<any> {
     return this.http.get<any>(this.basePath + '/video-detail/' + id, this.getOptions())}

@@ -11,6 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 
 export class RailwayComponent implements OnInit {
 
+  //railway and video list
+  railway: any;
+  videoList: any;
+  currentVideo: any;
+
   video: any;
   showQuestions = true;
   intervalPassed: any;
@@ -32,9 +37,21 @@ export class RailwayComponent implements OnInit {
   constructor(public api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //get id
     this.par = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
     });
+    //load specific railway
+    this.api.getRailwayDetail(this.id).subscribe((res: any) => {
+      this.railway = res;
+    })
+    //load video list
+    this.api.getRailwayVideoList(this.id).subscribe((res: any) => {
+      this.videoList = res;
+      this.currentVideo = this.videoList[0];
+      //console.log(this.currentVideo)
+    })
+
   }
 
   videoDoneShowQuestions(done: boolean) {

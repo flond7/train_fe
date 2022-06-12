@@ -23,11 +23,13 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getVideoDetails(this.videoId).subscribe(data => {
+      console.log(data)
       this.video = data
       this.video.url = this.video.url + '?controls=0?enablejsapi=1&origin='+this.frontEndOrigin;
     });
-    this.videoYTid = 'kVpv8-5XWOI';
-    this.init();
+
+    //this.videoYTid = 'kVpv8-5XWOI';
+    //this.init();
   }
 
   /* 2. Initialize method for YT IFrame API */
@@ -111,6 +113,5 @@ export class VideoComponent implements OnInit {
         break;
     }
   }
-
 
 }
